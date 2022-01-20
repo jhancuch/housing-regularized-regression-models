@@ -16,11 +16,17 @@ Lasso regression is similar to the Ridge regression but has some key differences
 
 In general, a rule of thumb is that Lasso is expected to perform better when a small number of independent variables have large coefficients and the remaining independent variables have small coefficients or equal to zero. Ridge is expected to perform better when the dependent variable is the function of many of the independent variables. 
 
-ElasticNet description
-Description of hyperparameter selection
+ElasticNet model is a compromise between Ridge and Lasso. It introduces estic-net penalty that governs the trade-off between l1 (Lasso) and l2 (Ridge). By having a penalty that favors l1, you have a model that is more similar to a pure Lasso model but having Ridge characteristics in terms of shrinkage of the coeffiencts. And vice versa.
+
+I additionally use GridSearchCV to examine the grid of hyperparameters associated with the ElasticNet model to find the optimal equation. I check the l1_ratio which determines the scaling between l2 penalty (Ridge) and l1 penalty (Lasso), number of cross validations, the number of alphas along the regularization path, and the max number of iterations. The set of parameters that had the best score was different than my initial parameters but the RMSE was similar, but higher by roughly .001. 
 
 # Results and Evaluation
-table of RMSE results
+| Metric | Ridge | Lasso | ElasticNet | Tuned ElasticNet |
+|---     | ---   | ---   |---         |---               |
+| Cross Validation RMSE | 0.00164 | 0.00164 | 0.00164 | 0.00166 |
+| Test Set RMSE | 0.18086 | 0.18607 | 0.18543 | 0.19252 |
+
+
 discussion of why certain ones performed better
 
 # Discussion
